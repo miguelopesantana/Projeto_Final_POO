@@ -1,4 +1,4 @@
-package ProjetoFinalPOO;
+package com.company;
 
 public class ProdutoLimpeza extends Produto {
 	int toxicidade;

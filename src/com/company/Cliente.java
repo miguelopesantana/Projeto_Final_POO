@@ -1,4 +1,4 @@
-package ProjetoFinalPOO;
+package com.company;
 
 public class Cliente {
 	String nome;
