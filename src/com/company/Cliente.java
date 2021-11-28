@@ -2,6 +2,7 @@ package com.company;
 
 public class Cliente {
 	String nome;
+	String morada;
 	String email;
 	int num_telemovel;
 	int data_nasc;

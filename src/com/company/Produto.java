@@ -1,6 +1,6 @@
 package com.company;
 
-public class Produto {
+abstract class Produto {
 	int identificador;
 	String nome;
 	int preco;

@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoMobiliario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoMobiliario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,8 +78,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -110,9 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1637601660806</updated>
       <workItem from="1637601660921" duration="1000" />
-      <workItem from="1637601931911" duration="932000" />
-      <workItem from="1637668913298" duration="1628000" />
-      <workItem from="1637832046168" duration="1351000" />
+      <workItem from="1637601931911" duration="393000" />
     </task>
     <servers />
   </component>
@@ -129,6 +120,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

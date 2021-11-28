@@ -15,4 +15,16 @@ public class Loja {
         produtosDisponiveis = new ArrayList<>();
         //produtosPromocao = new ArrayList<>();
     }
+
+    public void comprar(){
+        
+    }
+
+
+    public void consultar() {
+
+    }
+
+    public void mudarData() {
+    }
 }
