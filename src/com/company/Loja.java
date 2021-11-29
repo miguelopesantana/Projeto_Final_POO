@@ -7,6 +7,7 @@ public class Loja {
     protected List<Cliente> clientesFrequentes;
     protected List<Cliente> clientesNormais;
     protected List<Produto> produtosDisponiveis;
+    protected List<Compra> listaCompras;
     //protected List<Promocoes> produtosPromocao;
 
     public Loja(){
@@ -22,6 +23,9 @@ public class Loja {
 
 
     public void consultar() {
+        for(Compra compra: listaCompras){
+            System.out.println(compra.toString());
+        }
 
     }
 
