@@ -19,7 +19,7 @@ public class Loja {
     }
 
     public void comprar(){
-        
+
     }
 
 

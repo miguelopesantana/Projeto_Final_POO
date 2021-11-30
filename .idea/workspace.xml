@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="3">
       <change afterPath="$PROJECT_DIR$/src/com/company/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+=======
+    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Organizar funções">
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,12 +124,21 @@
       <workItem from="1637832046168" duration="1351000" />
       <workItem from="1638202817686" duration="1694000" />
     </task>
+<<<<<<< Updated upstream
     <task id="LOCAL-00001" summary="3">
       <created>1638145856898</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1638145856898</updated>
+=======
+    <task id="LOCAL-00001" summary="Organizar funções">
+      <created>1638141314228</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1638141314228</updated>
+>>>>>>> Stashed changes
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -146,7 +159,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< Updated upstream
     <MESSAGE value="3" />
     <option name="LAST_COMMIT_MESSAGE" value="3" />
+=======
+    <MESSAGE value="Organizar funções" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organizar funções" />
+>>>>>>> Stashed changes
   </component>
 </project>
