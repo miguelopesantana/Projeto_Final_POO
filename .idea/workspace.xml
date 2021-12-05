@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="data class and function">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2021_11_26_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2021_11_26__Changes_.xml" beforeDir="false" />
+    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/company/ClientesF.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Compra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+    </list>
+    <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="">
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +34,22 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/com/company/Main.java">
+      <ranges>
+        <range start1="10" end1="10" start2="10" end2="14" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="53" end1="54" start2="57" end2="58" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="63" end1="64" start2="67" end2="68" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="70" end1="71" start2="74" end2="75" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+        <range start1="85" end1="86" start2="89" end2="90" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="87" end1="87" start2="91" end2="92" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="21HcsBzJG2ovGn85M63LHeM0KCa" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
@@ -93,7 +111,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/company" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mls24\IdeaProjects\Projeto_Final_POO\src\com\company" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">

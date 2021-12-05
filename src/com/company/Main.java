@@ -6,8 +6,12 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         Loja loja = new Loja();
+        File fclientesf = new File("ClientesF.txt");
+        File fclientesr = new File("ClientesR.txt");
+        File produtos = new File("Produtos.txt");
+        loja.update(fclientesf);
 
         String dia = "";
         float amp = 0;
@@ -51,7 +55,7 @@ public class Main {
             escolha = stdin.nextInt();
             System.out.println("--------------------------------------------------------\n");
             switch (escolha) {
-                case 1 -> login();
+                case 1 -> login(fclientesf);
                 case 2 -> loja.comprar();
                 case 3 -> loja.consultar();
                 case 4 -> loja.mudarData();
@@ -61,7 +65,7 @@ public class Main {
 
     }
 
-    public static void login(){
+    public static void login(File f){
         System.out.printf("Introduza o seu email:\n");
         Scanner sc = new Scanner(System.in);
         String email = sc.nextLine();
@@ -83,8 +87,9 @@ public class Main {
                     String nome = parts[1];
                     //se o email introduzido pelo user for igual a algum email que está no ficheiro de texto, log in feito
                     if (Objects.equals(email, mail)) {
-                        System.out.printf("Log in concluído com sucesso!\n");
+                        System.out.printf("Login concluído com sucesso!\n");
                         System.out.printf("Bem vindo %s\n", nome);
+                        break;
                     }
                 }
                 br.close();
