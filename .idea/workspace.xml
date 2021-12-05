@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/ClientesF.txt" afterDir="false" />
+    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Leitura dos ficheiros">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Compra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
@@ -37,12 +35,15 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/com/company/Main.java">
       <ranges>
-        <range start1="10" end1="10" start2="10" end2="14" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="53" end1="54" start2="57" end2="58" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="63" end1="64" start2="67" end2="68" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="70" end1="71" start2="74" end2="75" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="85" end1="86" start2="89" end2="90" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="87" end1="87" start2="91" end2="92" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="3" end1="3" start2="3" end2="5" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="8" end1="9" start2="10" end2="11" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="10" end1="14" start2="12" end2="17" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="57" end1="58" start2="60" end2="61" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="67" end1="69" start2="70" end2="74" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="73" end1="73" start2="78" end2="79" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+        <range start1="74" end1="79" start2="80" end2="81" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+        <range start1="80" end1="102" start2="82" end2="85" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+        <range start1="104" end1="104" start2="87" end2="99" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
       </ranges>
     </file>
   </component>
@@ -154,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638145856898</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Leitura dos ficheiros">
+      <created>1638719024427</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1638719024427</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +182,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="3" />
-    <option name="LAST_COMMIT_MESSAGE" value="3" />
+    <MESSAGE value="Leitura dos ficheiros" />
+    <option name="LAST_COMMIT_MESSAGE" value="Leitura dos ficheiros" />
   </component>
 </project>

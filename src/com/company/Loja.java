@@ -7,27 +7,27 @@ import java.io.*;
 //import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Loja {
     protected List<Cliente> clientesFrequentes;
-    protected List<Cliente> clientesNormais;
+    protected List<Cliente> clientesRegulares;
     protected List<Produto> produtosDisponiveis;
     protected List<Compra> listaCompras;
     //protected List<Promocoes> produtosPromocao;
 
     public Loja(){
         clientesFrequentes = new ArrayList<>();
-        clientesNormais = new ArrayList<>();
+        clientesRegulares = new ArrayList<>();
         produtosDisponiveis = new ArrayList<>();
         //produtosPromocao = new ArrayList<>();
     }
 
-    public void update(File f){
-        if (f.exists() && f.isFile()) {
+    public void update(File fcf, File fcr, File p){
+
+        if (fcf.exists() && fcf.isFile()) {
             try {
-                FileReader fr = new FileReader(f);
+                FileReader fr = new FileReader(fcf);
                 BufferedReader br = new BufferedReader(fr);
 
                 String line;

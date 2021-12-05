@@ -1,17 +1,20 @@
 package com.company;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Loja loja = new Loja();
-        File fclientesf = new File("ClientesF.txt");
-        File fclientesr = new File("ClientesR.txt");
-        File produtos = new File("Produtos.txt");
-        loja.update(fclientesf);
+
+        File fcf = new File("ClientesF.txt");
+        File fcr = new File("ClientesR.txt");
+        File p = new File("Produtos.txt");
+        loja.update(fcf, fcr, p);
 
         String dia = "";
         float amp = 0;
@@ -55,7 +58,7 @@ public class Main {
             escolha = stdin.nextInt();
             System.out.println("--------------------------------------------------------\n");
             switch (escolha) {
-                case 1 -> login(fclientesf);
+                case 1 -> login(loja, 0);
                 case 2 -> loja.comprar();
                 case 3 -> loja.consultar();
                 case 4 -> loja.mudarData();
@@ -65,8 +68,10 @@ public class Main {
 
     }
 
-    public static void login(File f){
-        System.out.printf("Introduza o seu email:\n");
+    public static void login(Loja loja, int n) {
+        int f;
+        if (n==0) System.out.printf("Introduza o seu email:   ");
+        else if (n==1) System.out.printf("Introduza novamente o seu email:   ");
         Scanner sc = new Scanner(System.in);
         String email = sc.nextLine();
 
@@ -102,4 +107,16 @@ public class Main {
             System.out.println("Ficheiro não existe.");
         }
     }
+
+    public static int verificar(String email, List<Cliente> list) {
+        for (Cliente c : list) {
+            if (email.equals(c.email)) {
+                System.out.printf("Login concluído com sucesso!\n");
+                System.out.printf("Bem vindo %s\n", c.nome);
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }
