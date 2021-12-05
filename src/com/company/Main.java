@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.*;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
 
         String dia = "";
         float amp = 0;
+        /*
         File f = new File("tempo.txt");
         if (f.exists() && f.isFile()) {
             try {
@@ -35,6 +37,8 @@ public class Main {
         } else {
             System.out.println("Ficheiro não existe.");
         }
+        */
+
 
         int escolha;
         Scanner stdin = new Scanner(System.in);
@@ -58,6 +62,39 @@ public class Main {
     }
 
     public static void login(){
+        System.out.printf("Introduza o seu email:\n");
+        Scanner sc = new Scanner(System.in);
+        String email = sc.nextLine();
 
+        //lê ficheiro
+
+        File f = new File("clientes.txt");
+        if (f.exists() && f.isFile()) {
+            try {
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr);
+
+                String line;
+
+                while ((line = br.readLine()) != null) {
+                    int i = 0;
+                    String[] parts = line.split(";");
+                    String mail = parts[3];
+                    String nome = parts[1];
+                    //se o email introduzido pelo user for igual a algum email que está no ficheiro de texto, log in feito
+                    if (Objects.equals(email, mail)) {
+                        System.out.printf("Log in concluído com sucesso!\n");
+                        System.out.printf("Bem vindo %s\n", nome);
+                    }
+                }
+                br.close();
+            } catch (FileNotFoundException ex) {
+                System.out.println("Erro a abrir ficheiro de texto.");
+            } catch (IOException ex) {
+                System.out.println("Erro a ler ficheiro de texto.");
+            }
+        } else {
+            System.out.println("Ficheiro não existe.");
+        }
     }
 }
