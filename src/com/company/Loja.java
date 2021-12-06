@@ -16,137 +16,80 @@ public class Loja {
     protected List<Compra> listaCompras;
     //protected List<Promocoes> produtosPromocao;
 
-    public Loja(){
+    public Loja() {
         clientesFrequentes = new ArrayList<>();
         clientesNormais = new ArrayList<>();
         produtosDisponiveis = new ArrayList<>();
         //produtosPromocao = new ArrayList<>();
     }
 
-    public void update(File fcf, File fcn, File p){
-        if (fcf.exists() && fcf.isFile()) {
-            try {
-                FileReader fr = new FileReader(fcf);
-                BufferedReader br = new BufferedReader(fr);
-
-                String line;
-
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split(";");
-                    String nome = parts[0];
-                    String morada = parts[1];
-                    String email = parts[2];
-                    int num_tel = Integer.parseInt(parts[3]);
-                    int data_nasc = Integer.parseInt(parts[4]);
-
-                    Cliente cliente = new Cliente(nome, morada, email, num_tel, data_nasc);
-                    clientesFrequentes.add(cliente);
-                }
-                br.close();
-            } catch (FileNotFoundException ex) {
-                System.out.println("Erro a abrir ficheiro de texto.");
-            } catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro de texto.");
-            }
-        } else {
-            System.out.println("Ficheiro não existe.");
-        }
-        if (fcn.exists() && fcn.isFile()) {
-            try {
-                FileReader fr = new FileReader(fcn);
-                BufferedReader br = new BufferedReader(fr);
-
-                String line;
-
-                while ((line = br.readLine()) != null) {
-                    int i = 0;
-                    String[] parts = line.split(";");
-                    String nome = parts[0];
-                    String morada = parts[1];
-                    String email = parts[2];
-                    int num_tel = Integer.parseInt(parts[3]);
-                    int data_nasc = Integer.parseInt(parts[4]);
-
-                    Cliente cliente = new Cliente(nome, morada,email, num_tel, data_nasc);
-                    clientesNormais.add(cliente);
-                }
-                br.close();
-            } catch (FileNotFoundException ex) {
-                System.out.println("Erro a abrir ficheiro de texto.");
-            } catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro de texto.");
-            }
-        } else {
-            System.out.println("Ficheiro não existe.");
-        }
-        if (p.exists() && p.isFile()) {
-            try {
-                FileReader fr = new FileReader(p);
-                BufferedReader br = new BufferedReader(fr);
-
-                String line;
-
-                while ((line = br.readLine()) != null) {
-                    int i = 0;
-                    String[] parts = line.split(";");
-                    int identificador = Integer.parseInt(parts[0]);
-                    //produto alimentar
-                    if(identificador > 0 && identificador <= 10000){
-                        String nome = parts[1];
-                        int preco = Integer.parseInt(parts[2]);
-                        int stock = Integer.parseInt(parts[3]);
-                        int num_cal = Integer.parseInt(parts[4]);
-                        int perc_gord = Integer.parseInt(parts[5]);
-
-                        Produto produto = new ProdutoAlimentar(identificador, nome, preco, stock, num_cal, perc_gord);
-                        produtosDisponiveis.add(produto);
-                    }
-                    //Produto limpeza
-                    if(identificador > 10000 && identificador <= 20000){
-                        String nome = parts[1];
-                        int preco = Integer.parseInt(parts[2]);
-                        int stock = Integer.parseInt(parts[3]);
-                        int toxicidade = Integer.parseInt(parts[4]);
-
-                        Produto produto = new ProdutoLimpeza(identificador, nome, preco, stock, toxicidade);
-                        produtosDisponiveis.add(produto);
-                    }
-                    //produto mobiliário
-                    if(identificador > 20000 && identificador <= 30000){
-                        String nome = parts[1];
-                        int preco = Integer.parseInt(parts[2]);
-                        int stock = Integer.parseInt(parts[3]);
-                        int peso = Integer.parseInt(parts[4]);
-                        int altura = Integer.parseInt(parts[5]);
-                        int largura = Integer.parseInt(parts[6]);
-                        int profundidade = Integer.parseInt(parts[7]);
-
-                        Produto produto = new ProdutoMobiliario(identificador, nome, preco, stock, peso, altura, largura, profundidade);
-                        produtosDisponiveis.add(produto);
-                    }
-                }
-                br.close();
-            } catch (FileNotFoundException ex) {
-                System.out.println("Erro a abrir ficheiro de texto.");
-            } catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro de texto.");
-            }
-        } else {
-            System.out.println("Ficheiro não existe.");
-        }
-
+    public void update(File fcf, File fcr, File p){
+        lerClientes(fcr, 0);
+        lerClientes(fcf, 1);
+        lerProdutos(p);
     }
 
-    public void comprar(){
+    public void lerClientes(File f, int n){
+        if (f.exists() && f.isFile()) {
+            try {
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr);
+
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split(";");
+                    switch (n) {
+                        case 0 -> clientesNormais.add(new Cliente(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Integer.parseInt(parts[4])));
+                        case 1 -> clientesFrequentes.add(new Cliente(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Integer.parseInt(parts[4])));
+                    }
+                }
+                br.close();
+            } catch (FileNotFoundException ex) {
+                System.out.println("Erro a abrir ficheiro de texto.");
+            } catch (IOException ex) {
+                System.out.println("Erro a ler ficheiro de texto.");
+            }
+        } else {
+            System.out.println("Ficheiro não existe.");
+        }
+    }
+
+    public void lerProdutos(File f){
+        if (f.exists() && f.isFile()) {
+            try {
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr);
+
+                String line;
+
+                while ((line = br.readLine()) != null) {
+                    String[] l = line.split(";");
+                    switch (Integer.parseInt(l[0])) {
+                        case 0 -> produtosDisponiveis.add(new ProdutoAlimentar(Integer.parseInt(l[0]), l[1], Integer.parseInt(l[2]), Integer.parseInt(l[3]), Integer.parseInt(l[4]), Integer.parseInt(l[5])));
+                        case 1 -> produtosDisponiveis.add(new ProdutoLimpeza(Integer.parseInt(l[0]), l[1], Integer.parseInt(l[2]), Integer.parseInt(l[3]), Integer.parseInt(l[4])));
+                        case 2 -> produtosDisponiveis.add(new ProdutoMobiliario(Integer.parseInt(l[0]), l[1], Integer.parseInt(l[2]), Integer.parseInt(l[3]), Integer.parseInt(l[4]), Integer.parseInt(l[5]), Integer.parseInt(l[6]), Integer.parseInt(l[7])));
+                    }
+                }
+                br.close();
+            } catch (FileNotFoundException ex) {
+                System.out.println("Erro a abrir ficheiro de texto.");
+            } catch (IOException ex) {
+                System.out.println("Erro a ler ficheiro de texto.");
+            }
+        } else {
+            System.out.println("Ficheiro não existe.");
+        }
+    }
+
+    public void comprar() {
 
     }
 
 
     public void consultar() {
-        for(Compra compra: listaCompras){
+        for (Compra compra : listaCompras) {
             System.out.println(compra.toString());
         }
-
     }
 
     public void mudarData() {
@@ -160,7 +103,7 @@ public class Loja {
         System.out.printf("Ano: ");
         Scanner sc2 = new Scanner(System.in);
         int ano = sc2.nextInt();
-        while(!Data.verificaData(dia,mes,ano)) {
+        while (!Data.verificaData(dia, mes, ano)) {
             System.out.printf("Insira a data:\n ");
             System.out.printf("Dia: ");
             Scanner sc3 = new Scanner(System.in);

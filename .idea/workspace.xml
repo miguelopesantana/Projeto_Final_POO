@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="função update feita">
+    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Login fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Produto.java" afterDir="false" />
     </list>
     <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638739800266</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Login fixed">
+      <created>1638792451973</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1638792451973</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +197,7 @@
     <MESSAGE value="log in" />
     <MESSAGE value="o caraho" />
     <MESSAGE value="função update feita" />
-    <option name="LAST_COMMIT_MESSAGE" value="função update feita" />
+    <MESSAGE value="Login fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login fixed" />
   </component>
 </project>

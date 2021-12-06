@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Loja loja = new Loja();
         File fclientesf = new File("ClientesF.txt");
         File fclientesr = new File("ClientesR.txt");
