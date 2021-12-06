@@ -1,17 +1,20 @@
 package com.company;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Loja loja = new Loja();
         File fclientesf = new File("ClientesF.txt");
         File fclientesr = new File("ClientesR.txt");
-        File produtos = new File("Produtos.txt");
-        loja.update(fclientesf, fclientesr, produtos);
+        File fprodutos = new File("Produtos.txt");
+
+        loja.update(fclientesf, fclientesr, fprodutos);
 
         /*
         String dia = "";
@@ -56,7 +59,7 @@ public class Main {
             escolha = stdin.nextInt();
             System.out.println("--------------------------------------------------------\n");
             switch (escolha) {
-                case 1 -> login(fclientesf, fclientesr);
+                case 1 -> login(loja, 0);
                 case 2 -> loja.comprar();
                 case 3 -> loja.consultar();
                 case 4 -> loja.mudarData();
@@ -66,40 +69,31 @@ public class Main {
 
     }
 
-    public static void login(File cf, File cr){
-        System.out.printf("Introduza o seu email:\n");
+    public static void login(Loja loja, int n) {
+        int flag;
+        if (n == 0) System.out.printf("Introduza o seu email:   ");
+        else if (n == 1) System.out.printf("Introduza novamente o seu email:   ");
         Scanner sc = new Scanner(System.in);
         String email = sc.nextLine();
 
-        //lê ficheiro
+        flag = verificar(email, loja.clientesFrequentes);
 
-        if (cf.exists() && cf.isFile()) {
-            try {
-                FileReader fr = new FileReader(cf);
-                BufferedReader br = new BufferedReader(fr);
+        if (flag == 0) flag = verificar(email, loja.clientesNormais);
 
-                String line;
-
-                while ((line = br.readLine()) != null) {
-                    int i = 0;
-                    String[] parts = line.split(";");
-                    String mail = parts[3];
-                    String nome = parts[1];
-                    //se o email introduzido pelo user for igual a algum email que está no ficheiro de texto, log in feito
-                    if (Objects.equals(email, mail)) {
-                        System.out.printf("Login concluído com sucesso!\n");
-                        System.out.printf("Bem vindo %s\n", nome);
-                        break;
-                    }
-                }
-                br.close();
-            } catch (FileNotFoundException ex) {
-                System.out.println("Erro a abrir ficheiro de texto.");
-            } catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro de texto.");
-            }
-        } else {
-            System.out.println("Ficheiro não existe.");
+        if (flag == 0) {
+            System.out.println("Email não registado.");
+            login(loja, 1);
         }
+    }
+
+    public static int verificar(String email, List<Cliente> list) {
+        for (Cliente c : list) {
+            if (email.equals(c.email)) {
+                System.out.printf("Login concluído com sucesso!\n");
+                System.out.printf("Bem vindo %s\n", c.nome);
+                return 1;
+            }
+        }
+        return 0;
     }
 }

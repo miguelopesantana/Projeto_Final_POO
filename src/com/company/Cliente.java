@@ -6,7 +6,7 @@ public class Cliente {
 	String email;
 	int num_telemovel;
 	int data_nasc;
-	
+
 	public Cliente(String nome, String morada, String email, int num_telemovel, int data_nasc) {
 		this.nome = nome;
 		this.morada = morada;
@@ -14,7 +14,4 @@ public class Cliente {
 		this.num_telemovel = num_telemovel;
 		this.data_nasc = data_nasc;
 	}
-	
-
-	
 }

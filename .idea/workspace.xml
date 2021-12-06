@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="função update feita">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="" />
