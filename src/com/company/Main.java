@@ -11,11 +11,12 @@ public class Main {
         File fclientesf = new File("ClientesF.txt");
         File fclientesr = new File("ClientesR.txt");
         File produtos = new File("Produtos.txt");
-        loja.update(fclientesf);
+        loja.update(fclientesf, fclientesr, produtos);
 
+        /*
         String dia = "";
         float amp = 0;
-        /*
+
         File f = new File("tempo.txt");
         if (f.exists() && f.isFile()) {
             try {
@@ -55,7 +56,7 @@ public class Main {
             escolha = stdin.nextInt();
             System.out.println("--------------------------------------------------------\n");
             switch (escolha) {
-                case 1 -> login(fclientesf);
+                case 1 -> login(fclientesf, fclientesr);
                 case 2 -> loja.comprar();
                 case 3 -> loja.consultar();
                 case 4 -> loja.mudarData();
@@ -65,17 +66,16 @@ public class Main {
 
     }
 
-    public static void login(File f){
+    public static void login(File cf, File cr){
         System.out.printf("Introduza o seu email:\n");
         Scanner sc = new Scanner(System.in);
         String email = sc.nextLine();
 
         //lê ficheiro
 
-        File f = new File("clientes.txt");
-        if (f.exists() && f.isFile()) {
+        if (cf.exists() && cf.isFile()) {
             try {
-                FileReader fr = new FileReader(f);
+                FileReader fr = new FileReader(cf);
                 BufferedReader br = new BufferedReader(fr);
 
                 String line;
