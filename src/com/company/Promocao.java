@@ -1,11 +1,13 @@
 package com.company;
 
+import java.io.Serializable;
+
 /**
  * Classe que caracteriza uma Promoção
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class Promocao {
+public class Promocao implements Serializable {
     protected int tipo;
     protected String[] datai;
     protected String[] dataf;

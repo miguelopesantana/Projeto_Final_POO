@@ -11,10 +11,11 @@ import java.util.Scanner;
 
 /**
  * Classe que representa a Loja
+ *
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class Loja {
+public class Loja implements Serializable {
     protected List<Cliente> clientesFrequentes;
     protected List<Cliente> clientesNormais;
     protected List<Produto> produtosDisponiveis;
@@ -34,19 +35,79 @@ public class Loja {
         Recibos = new ArrayList<>();
     }
 
-    public void update(File fcf, File fcr, File p) { //NAO COMENTAR
+    public static void main(String[] args) {
+        Loja loja = new Loja();
+        File f = new File("loja.obj");
 
-//        lerClientesObj();
-//        lerProdutosObj();
+        loja.update(f);
 
-        lerClientes(fcr, 0);
-        lerClientes(fcf, 1);
-        lerProdutos(p);
+        boolean frequente;
+        System.out.println("Para navegar na loja é necessário efetuar login e definir a data.\n");
+        frequente = loja.login(0);
+        Data data = new Data();
+        data = data.setData();
+        while (true) { // Menu
+            int escolha;
+            Scanner stdin = new Scanner(System.in);
+            System.out.println("MENU---------------------------------------------------");
+            System.out.println("1 - Mudar de conta");
+            System.out.println("2 - Mudar a data");
+            System.out.println("3 - Comprar produtos");
+            System.out.println("4 - Consultar o histórico de compras");
+            System.out.println("0 - Sair do programa");
+            escolha = stdin.nextInt();
+            System.out.println("--------------------------------------------------------\n");
+            switch (escolha) {
+                case 1 -> loja.login(0);
+                case 2 -> data = data.setData();
+                case 3 -> loja.comprar(frequente);
+                case 4 -> loja.listaRecibos();
+                case 0 -> loja.save(f);
+            }
+        }
 
 
     }
 
-    
+    public void update(File f) { //NAO COMENTAR
+        if (!lerFicObj(f)) lerFicstxt();
+    }
+
+
+    public boolean lerFicObj(File f) {
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Loja loja = (Loja) ois.readObject();
+            this.clientesFrequentes = loja.clientesFrequentes;
+            this.clientesNormais = loja.clientesNormais;
+            this.produtosDisponiveis = loja.produtosDisponiveis;
+            this.Carrinho = loja.Carrinho;
+            this.Recibos = loja.Recibos;
+            ois.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a abrir ficheiro de objetos.");
+            return false;
+        } catch (IOException ex) {
+            System.out.println("Erro a ler ficheiro de objetos.");
+            return false;
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Erro a converter objeto.");
+            return false;
+        }
+    }
+
+
+    public void lerFicstxt() {
+        File fcf = new File("ClientesF.txt");
+        File fcr = new File("ClientesR.txt");
+        File fp = new File("Produtos.txt");
+
+        lerClientes(fcr, 0);
+        lerClientes(fcf, 1);
+        lerProdutos(fp);
+    }
 
     public void lerClientes(File f, int n) { //NAO COMENTAR
         if (f.exists() && f.isFile()) {
@@ -80,13 +141,14 @@ public class Loja {
                 BufferedReader br = new BufferedReader(fr);
 
                 String line;
-
+                int id = 0;
                 while ((line = br.readLine()) != null) {
                     String[] l = line.split(";");
+                    id++;
                     switch (Integer.parseInt(l[0])) {
-                        case 0 -> produtosDisponiveis.add(new ProdutoAlimentar(Integer.parseInt(l[0]), Integer.parseInt(l[1]), l[2], Float.parseFloat(l[3]), Integer.parseInt(l[4]), new Promocao(Integer.parseInt(l[5]), l[6].split("/"), l[7].split("/")), Integer.parseInt(l[8]), Integer.parseInt(l[9].split("%")[0])));
-                        case 1 -> produtosDisponiveis.add(new ProdutoLimpeza(Integer.parseInt(l[0]), Integer.parseInt(l[1]), l[2], Float.parseFloat(l[3]), Integer.parseInt(l[4]), new Promocao(Integer.parseInt(l[5]), l[6].split("/"), l[7].split("/")), Integer.parseInt(l[5])));
-                        case 2 -> produtosDisponiveis.add(new ProdutoMobiliario(Integer.parseInt(l[0]), Integer.parseInt(l[1]), l[2], Float.parseFloat(l[3]), Integer.parseInt(l[4]), new Promocao(Integer.parseInt(l[5]), l[6].split("/"), l[7].split("/")), Integer.parseInt(l[8]), Integer.parseInt(l[9]), Integer.parseInt(l[10]), Integer.parseInt(l[11])));
+                        case 0 -> produtosDisponiveis.add(new ProdutoAlimentar(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), l[5].split("/"), l[6].split("/")), Integer.parseInt(l[7]), Integer.parseInt(l[8].split("%")[0])));
+                        case 1 -> produtosDisponiveis.add(new ProdutoLimpeza(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), l[5].split("/"), l[6].split("/")), Integer.parseInt(l[7])));
+                        case 2 -> produtosDisponiveis.add(new ProdutoMobiliario(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), l[5].split("/"), l[6].split("/")), Integer.parseInt(l[7]), Integer.parseInt(l[8]), Integer.parseInt(l[9]), Integer.parseInt(l[10])));
                     }
                 }
                 br.close();
@@ -100,6 +162,49 @@ public class Loja {
         } else {
             System.out.println("Ficheiro não existe.");
         }
+    }
+
+    /**
+     * Método que permite efetuar o login na aplicação
+     * Pede o email ao utilizador e verifica se este está registado
+     *
+     * @param n inteiro que serve de condição para o login ser efetuado com sucesso
+     * @return true caso o login seja feito com sucesso, false caso contrário
+     */
+
+    public boolean login(int n) {
+        if (n == 0) System.out.printf("Introduza o seu email:   ");
+        else if (n == 1) System.out.printf("\nIntroduza novamente o seu email:   ");
+        Scanner sc = new Scanner(System.in);
+        String email = sc.nextLine();
+
+        if (!verificar(email, clientesFrequentes, 1) && !verificar(email, clientesNormais, 1)) {
+            System.out.println("Email não registado.");
+            login(1);
+        }
+
+        return verificar(email, clientesFrequentes, 0);
+    }
+
+    /**
+     * Método que verifica se o email introduzido pelo Cliente está registado na lista de Clientes
+     *
+     * @param email email do Cliente
+     * @param lista lista de Clientes registados
+     * @param n     inteiro que serve de condição para o login ser efetuado com sucesso
+     * @return true se o login foi feito com sucesso, false caso o login não tenha sido feito
+     */
+
+    public boolean verificar(String email, List<Cliente> lista, int n) {
+        for (Cliente c : lista) {
+            if (email.equals(c.email) && n == 1) {
+                System.out.println("Login concluído com sucesso!");
+                System.out.printf("Bem vindo %s.\n\n", c.nome);
+                return true;
+            }
+
+        }
+        return false;
     }
 
     /**
@@ -154,7 +259,7 @@ public class Loja {
 
             float preco = 0;
             if (produtosDisponiveis.get(i).promo.tipo == 0) {
-                preco = qt*produtosDisponiveis.get(i).preco;
+                preco = qt * produtosDisponiveis.get(i).preco;
             } else if (produtosDisponiveis.get(i).promo.tipo == 1) {
                 if (qt < 4) preco = qt * produtosDisponiveis.get(i).preco;
                 else {
@@ -223,8 +328,9 @@ public class Loja {
      * Se o Cliente for frequente mas o preço da compra for inferior a 40€, é acrescentada uma taxa de 15€ ao preço final
      * Adiciona o recibo à lista de Recibos e imprime o mesmo
      * Limpa o Carrinho
+     *
      * @param frequente boolean que define se o Cliente em questão é Frequente ou Normal
-     * @param preco preço da compra sem taxa de entrega
+     * @param preco     preço da compra sem taxa de entrega
      */
 
     public void recibo(boolean frequente, float preco) {
@@ -263,7 +369,7 @@ public class Loja {
 //    }
 
     /**
-     * Método que apresenta a listagem de todos os recibos
+     * Método que apresenta a lista de todos os recibos
      */
 
     public void listaRecibos() {
@@ -277,33 +383,29 @@ public class Loja {
         }
     }
 
-    /**
-     * Método que permite ao utilizador alterar a data
-     */
+    public void save(File f) { //NAO COMENTAR
 
-    public void mudarData() {
-        System.out.printf("Insira a data:\n");
-        System.out.printf("Dia: ");
-        Scanner sc = new Scanner(System.in);
-        int dia = sc.nextInt();
-        System.out.printf("Mês: ");
-        Scanner sc1 = new Scanner(System.in);
-        int mes = sc1.nextInt();
-        System.out.printf("Ano: ");
-        Scanner sc2 = new Scanner(System.in);
-        int ano = sc2.nextInt();
-        while (!Data.verificaData(dia, mes, ano)) {
-            System.out.printf("Insira a data:\n ");
-            System.out.printf("Dia: ");
-            Scanner sc3 = new Scanner(System.in);
-            dia = sc3.nextInt();
-            System.out.printf("Mês: ");
-            Scanner sc4 = new Scanner(System.in);
-            mes = sc4.nextInt();
-            System.out.printf("Ano: ");
-            Scanner sc5 = new Scanner(System.in);
-            ano = sc5.nextInt();
+        try {
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+            oos.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a criar ficheiro.");
+        } catch (IOException ex) {
+            System.out.println("Erro a escrever para o ficheiro.");
         }
-        Data data = new Data(dia, mes, ano);
+        System.exit(0);
+    }
+
+    @Override
+    public String toString() {
+        return "Loja{" +
+                "clientesFrequentes=" + clientesFrequentes +
+                ", clientesNormais=" + clientesNormais +
+                ", produtosDisponiveis=" + produtosDisponiveis +
+                ", Carrinho=" + Carrinho +
+                ", Recibos=" + Recibos +
+                '}';
     }
 }

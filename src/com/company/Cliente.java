@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.Serializable;
+
 /**
  * Classe que caracteriza um Cliente
  * @author Guilherme Faria e Miguel Santana
@@ -27,5 +29,15 @@ public class Cliente {
 		this.email = email;
 		this.num_telemovel = num_telemovel;
 		this.data_nasc = data_nasc;
+	}
+
+	@Override
+	public String toString() {
+		return nome + ';' +
+				"\n, morada='" + morada + '\'' +
+				"\n, email='" + email + '\'' +
+				"\n, num_telemovel=" + num_telemovel +
+				"\n, data_nasc='" + data_nasc + '\'' +
+				'}';
 	}
 }

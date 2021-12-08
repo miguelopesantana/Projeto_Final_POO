@@ -1,11 +1,13 @@
 package com.company;
 
+import java.io.Serializable;
+
 /**
  * Classe que caracteriza um Produto de Limpeza
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class ProdutoLimpeza extends Produto {
+public class ProdutoLimpeza extends Produto implements Serializable{
 	protected int toxicidade;
 
 	/**

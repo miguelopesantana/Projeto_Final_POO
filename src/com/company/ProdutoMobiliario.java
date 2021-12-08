@@ -1,11 +1,13 @@
 package com.company;
 
+import java.io.Serializable;
+
 /**
  * Classe que caracteriza um Produto de Mobiliário
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class ProdutoMobiliario extends Produto{
+public class ProdutoMobiliario extends Produto implements Serializable{
 	protected int peso;
 	protected int dimensao;
 

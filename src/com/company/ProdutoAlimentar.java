@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.Serializable;
+
 /**
  * Classe que caracteriza um Produto Alimentar
  * @author Guilherme Faria e Miguel Santana

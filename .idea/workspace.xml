@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Login fixed">
+    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Big commit">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Produtos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Produtos.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Compra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/JavaDoc.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Produto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" afterDir="false" />
@@ -14,7 +18,12 @@
       <change beforePath="$PROJECT_DIR$/src/com/company/Promocao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Promocao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Recibo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Recibo.java" afterDir="false" />
     </list>
-    <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="" />
+    <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="">
+      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Compra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +46,35 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java">
+      <ranges>
+        <range start1="1" end1="1" start2="1" end2="3" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="7" end1="8" start2="9" end2="10" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="21" end1="21" start2="23" end2="34" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/com/company/Cliente.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="7" end1="8" start2="9" end2="10" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+        <range start1="30" end1="30" start2="32" end2="42" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="8" end1="9" start2="10" end2="11" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/com/company/Compra.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
+        <range start1="7" end1="8" start2="9" end2="10" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+        <range start1="26" end1="26" start2="28" end2="33" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="21HcsBzJG2ovGn85M63LHeM0KCa" />
   <component name="ProjectLevelVcsManager">
@@ -114,15 +152,19 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Loja" />
       <module name="Projeto_Final_POO" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

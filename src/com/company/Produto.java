@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Arrays;
  *
  */
 
-abstract class Produto {
+abstract class Produto implements Serializable {
     protected int tipo;
     protected int indentificador;
     protected String nome;

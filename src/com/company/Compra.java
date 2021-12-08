@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.Serializable;
+
 /**
  * Classe que caracteriza uma Compra
  * @author Guilherme Faria e Miguel Santana

@@ -1,16 +1,16 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Classe que caracteriza um Recibo,
  * lista de produtos de uma compra
- *
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class Recibo {
+public class Recibo implements Serializable {
     protected List<Compra> Compras;
     protected int precot;
 
