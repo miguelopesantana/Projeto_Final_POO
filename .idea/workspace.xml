@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Update fixed">
-      <change afterPath="$PROJECT_DIR$/ClientesR.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Produtos.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ficheiro_produtos.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Promocao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Recibo.java" afterDir="false" />
+    <list default="true" id="02a2804a-94b0-40b6-b353-fe4ae72ca425" name="Changes" comment="Login fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ClientesF.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ClientesF.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Compra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Loja.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
@@ -17,14 +11,10 @@
       <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoMobiliario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoMobiliario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Produtos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Promocao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Promocao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Recibo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Recibo.java" afterDir="false" />
     </list>
-    <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Compra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java" afterDir="false" />
-    </list>
+    <list id="99136bb1-e493-44f3-9ba9-e26d84998abd" name="Changes by guifa" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,43 +37,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/com/company/Compra.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="6" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="3" end1="4" start2="7" end2="8" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="5" end1="5" start2="9" end2="11" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="6" end1="8" start2="12" end2="22" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="10" end1="10" start2="24" end2="29" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="11" end1="17" start2="30" end2="32" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="18" end1="18" start2="33" end2="55" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/com/company/ProdutoAlimentar.java">
-      <ranges>
-        <range start1="1" end1="1" start2="1" end2="6" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="3" end1="5" start2="8" end2="10" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="6" end1="10" start2="11" end2="27" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="11" end1="13" start2="28" end2="37" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="14" end1="14" start2="38" end2="44" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/com/company/ProdutoLimpeza.java">
-      <ranges>
-        <range start1="1" end1="1" start2="1" end2="6" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="4" end1="4" start2="9" end2="20" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="5" end1="7" start2="21" end2="23" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="9" end1="12" start2="25" end2="36" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/com/company/Cliente.java">
-      <ranges>
-        <range start1="1" end1="1" start2="1" end2="7" changelist="99136bb1-e493-44f3-9ba9-e26d84998abd" />
-        <range start1="7" end1="8" start2="13" end2="14" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-        <range start1="9" end1="10" start2="15" end2="25" changelist="02a2804a-94b0-40b6-b353-fe4ae72ca425" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="21HcsBzJG2ovGn85M63LHeM0KCa" />
   <component name="ProjectLevelVcsManager">
@@ -152,14 +105,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/company" />
-    <property name="settings.editor.selected.configurable" value="CodeWithMe" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mls24\IdeaProjects\Projeto_Final_POO\src\com\company" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mls24\IdeaProjects\Projeto_Final_POO" />
     </key>
   </component>
   <component name="RunManager">
@@ -173,11 +123,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -224,14 +169,7 @@
       <option name="project" value="LOCAL" />
       <updated>1638792451973</updated>
     </task>
-    <task id="LOCAL-00005" summary="Update fixed">
-      <created>1638807862293</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1638807862293</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,11 +205,6 @@
     <MESSAGE value="o caraho" />
     <MESSAGE value="função update feita" />
     <MESSAGE value="Login fixed" />
-    <MESSAGE value="Update fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update fixed" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="Login fixed" />
   </component>
 </project>

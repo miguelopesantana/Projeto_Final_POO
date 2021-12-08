@@ -1,16 +1,21 @@
 package com.company;
 
+/**
+ * Classe que caracteriza uma Compra
+ * @author Guilherme Faria e Miguel Santana
+ */
+
 public class Compra {
     protected String nome;
     protected int quantidade;
-    float preco;
-    boolean promo;
+    protected float preco;
+    protected boolean promo;
 
     /**
      * Construtor
-     * @param produto corresponde ao nome do produto
-     * @param quantidade corresponde à quantidade de produtos do mesmo tipo que o cliente pertende comprar
-     * @param preco corresponde ao preço total da compra a realizar
+     * @param produto nome do produto
+     * @param quantidade quantidade de produtos do mesmo tipo que o cliente pertende comprar
+     * @param preco preço total da compra a realizar
      */
 
     public Compra(String produto, int quantidade , float preco, boolean promocao){
@@ -25,7 +30,7 @@ public class Compra {
 
     /**
      * Função que recebe como parâmetro um inteiro e define a variável preço com o valor desse inteiro
-     * @param preco corresponde ao preço total da compra a realizar
+     * @param preco preço total da compra a realizar
      */
 
     public void setPreco(float preco) {
@@ -34,7 +39,7 @@ public class Compra {
 
 //    /**
 //     * Método que permite imprimir as características de uma compra
-//     * @return retorna uma string com todas as características da Classe Compra
+//     * @return uma string com todas as características da Classe Compra
 //     */
 
 //    @Override

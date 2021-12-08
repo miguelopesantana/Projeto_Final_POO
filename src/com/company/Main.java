@@ -41,6 +41,14 @@ public class Main {
 
     }
 
+    /**
+     * Método que permite efetuar o login na aplicação
+     * Pede o email ao utilizador e verifica se este está registado
+     * @param loja loja que possui os registos de clientes frequentes e clientes normais
+     * @param n inteiro que serve de condição para o login ser efetuado com sucesso
+     * @return true caso o login seja feito com sucesso, false caso contrário
+     */
+
     public static boolean login(Loja loja, int n) {
         if (n == 0) System.out.printf("Introduza o seu email:   ");
         else if (n == 1) System.out.printf("Introduza novamente o seu email:   ");
@@ -55,6 +63,14 @@ public class Main {
         return verificar(email, loja.clientesFrequentes, 0);
 
     }
+
+    /**
+     * Método que verifica se o email introduzido pelo Cliente está registado na lista de Clientes
+     * @param email email do Cliente
+     * @param list lista de Clientes registados
+     * @param n inteiro que serve de condição para o login ser efetuado com sucesso
+     * @return true se o login foi feito com sucesso, false caso o login não tenha sido feito
+     */
 
     public static boolean verificar(String email, List<Cliente> list, int n) {
         for (Cliente c : list) {

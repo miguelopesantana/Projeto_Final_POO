@@ -3,27 +3,27 @@ package com.company;
 import java.util.Arrays;
 
 /**
- * Classe que representa um produto e os seus atributos individuais
+ * Classe que caracteriza um Produto
  * @author Guilherme Faria e Miguel Santana
  *
  */
 
 abstract class Produto {
-    int tipo;
-    int indentificador;
-    String nome;
-    float preco;
-    int stock;
-    Promocao promo;
+    protected int tipo;
+    protected int indentificador;
+    protected String nome;
+    protected float preco;
+    protected int stock;
+    protected Promocao promo;
 
     /**
      * Construtor
-     * @param tipo representa o tipo de produto (Alimentar, Limpeza ou Mobiliário)
-     * @param indentificador representa o identificador de cada produto
-     * @param nome representa o nome do produto
-     * @param preco representa o preço unitário de cada produto
-     * @param stock representa a quantidade de produtos disponíveis (stock disponível)
-     * @param promo representa a promoção associada ao produto
+     * @param tipo tipo de produto (Alimentar, Limpeza ou Mobiliário)
+     * @param indentificador identificador de cada produto
+     * @param nome nome do produto
+     * @param preco preço unitário de cada produto
+     * @param stock quantidade de produtos disponíveis (stock disponível)
+     * @param promo promoção associada ao produto
      */
 
     public Produto(int tipo, int indentificador, String nome, float preco, int stock, Promocao promo) {

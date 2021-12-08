@@ -9,12 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe que representa a Loja
+ * @author Guilherme Faria e Miguel Santana
+ */
+
 public class Loja {
     protected List<Cliente> clientesFrequentes;
     protected List<Cliente> clientesNormais;
     protected List<Produto> produtosDisponiveis;
     protected List<Compra> Carrinho;
     protected List<Recibo> Recibos;
+
+    /**
+     * Construtor
+     * Inicia as listas de Clientes Frequentes, Clientes Normais, Produtos Disponíveis, Carrinho e Recibos
+     */
 
     public Loja() {
         clientesFrequentes = new ArrayList<>();
@@ -91,6 +101,20 @@ public class Loja {
             System.out.println("Ficheiro não existe.");
         }
     }
+
+    /**
+     * Este método permite realizar uma compra,
+     * apresenta a lista de produtos disponíveis caso esta ainda contenha produtos disponíveis para venda
+     * solicita qual o índice do produto que se pretende comprar
+     * solicita a quantidade, desse mesmo produto, que se pretende comprar
+     * verifica se o produto possui uma promoção e calcula o preço mediante essa verificação
+     * verifica o peso do produto caso este seja de mobiliário e ajusta o preço caso este seja superior a 15Kg
+     * após estas verificações, adiciona ao carrinho a solicitação de compra
+     * apresenta o valor final da compra
+     * pergunta ao utilizador se pretende receber o recibo da compra efetuada ou se deseja efetuar outra compra
+     *
+     * @param frequente boolean que define se o Cliente em questão é Frequente ou Normal
+     */
 
     public void comprar(boolean frequente) {
         if (produtosDisponiveis.size() == 0) {
@@ -193,6 +217,16 @@ public class Loja {
         }
     }
 
+    /**
+     * Método que gera o recibo associado a uma compra
+     * Se o Cliente não for frequente, acresce 20€ ao preço da compra
+     * Se o Cliente for frequente mas o preço da compra for inferior a 40€, é acrescentada uma taxa de 15€ ao preço final
+     * Adiciona o recibo à lista de Recibos e imprime o mesmo
+     * Limpa o Carrinho
+     * @param frequente boolean que define se o Cliente em questão é Frequente ou Normal
+     * @param preco preço da compra sem taxa de entrega
+     */
+
     public void recibo(boolean frequente, float preco) {
         int precot = 0;
         if (!frequente) precot += 20;
@@ -209,6 +243,9 @@ public class Loja {
         Carrinho.clear();
     }
 
+    /**
+     * Método que apresenta a listagem de todos os produtos disponíveis para venda
+     */
 
     public void listaprodutosDisponiveis() {
         int k = 0;
@@ -225,6 +262,10 @@ public class Loja {
 //        }
 //    }
 
+    /**
+     * Método que apresenta a listagem de todos os recibos
+     */
+
     public void listaRecibos() {
         System.out.println("Lista de recibos:\n");
         int k = 1;
@@ -235,6 +276,10 @@ public class Loja {
             k++;
         }
     }
+
+    /**
+     * Método que permite ao utilizador alterar a data
+     */
 
     public void mudarData() {
         System.out.printf("Insira a data:\n");

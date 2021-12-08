@@ -1,19 +1,25 @@
 package com.company;
 
+/**
+ * Classe que caracteriza um Produto Alimentar
+ * @author Guilherme Faria e Miguel Santana
+ */
+
+
 public class ProdutoAlimentar extends Produto{
-	int calorias;
-	int gordura;
+	protected int calorias;
+	protected int gordura;
 
 	/**
 	 * Construtor
-	 * @param tipo corresponde ao tipo do Produto
-	 * @param indentificador corresponde ao identificador do produto
-	 * @param nome corresponde ao nome do produto
-	 * @param preco corresponde ao preço do produto
-	 * @param stock corresponde à quantidade de produtos, de cada tipo, disponíveis (stock disponível)
-	 * @param promo corresponde à promoção associada ao produto, caso haja alguma
-	 * @param calorias corresponde ao número de calorias do produto alimentar
-	 * @param gordura corresponde à percentagem de gordura do produto alimentar
+	 * @param tipo tipo do Produto
+	 * @param indentificador identificador do produto
+	 * @param nome nome do produto
+	 * @param preco preço unitário do produto
+	 * @param stock quantidade de produtos, de cada tipo, disponíveis (stock disponível)
+	 * @param promo promoção associada ao produto, caso haja alguma
+	 * @param calorias número de calorias do produto alimentar
+	 * @param gordura percentagem de gordura do produto alimentar
 	 */
 
 	public ProdutoAlimentar(int tipo, int indentificador, String nome, float preco, int stock, Promocao promo, int calorias, int gordura) {
@@ -28,7 +34,7 @@ public class ProdutoAlimentar extends Produto{
 
 	/**
 	 * Método que permite imprimir as características de um ProdutoAlimentar
-	 * @return retorna uma string com todas as características da Classe ProdutoAlimentar
+	 * @return uma string com todas as características da Classe ProdutoAlimentar
 	 */
 
 	@Override

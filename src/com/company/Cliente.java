@@ -1,19 +1,24 @@
 package com.company;
 
+/**
+ * Classe que caracteriza um Cliente
+ * @author Guilherme Faria e Miguel Santana
+ */
+
 public class Cliente {
-	String nome;
-	String morada;
-	String email;
-	int num_telemovel;
-	String data_nasc;
+	protected String nome;
+	protected String morada;
+	protected String email;
+	protected int num_telemovel;
+	protected String data_nasc;
 
 	/**
 	 * Construtor
-	 * @param nome corresponde ao nome do Cliente
-	 * @param morada correspondente à morada do cliente
-	 * @param email  corresponde ao email do Cliente
-	 * @param num_telemovel corresponde ao número de telemóvel do Cliente
-	 * @param data_nasc corresponde à data de nascimento do Cliente
+	 * @param nome nome do Cliente
+	 * @param morada morada do Cliente
+	 * @param email  email do Cliente
+	 * @param num_telemovel número de telemóvel do Cliente
+	 * @param data_nasc data de nascimento do Cliente
 	 */
 
 	public Cliente(String nome, String morada, String email, int num_telemovel, String data_nasc) {
