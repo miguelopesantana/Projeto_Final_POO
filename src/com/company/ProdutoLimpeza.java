@@ -21,6 +21,7 @@ public class ProdutoLimpeza extends Produto implements Serializable{
 	 * @param toxicidade índice de toxicidade do produto
 	 */
 
+
 	public ProdutoLimpeza(int tipo, int indentificador, String nome, float preco, int stock, Promocao promo, int toxicidade) {
 		super(tipo, indentificador, nome, preco, stock, promo);
 		this.toxicidade = toxicidade;

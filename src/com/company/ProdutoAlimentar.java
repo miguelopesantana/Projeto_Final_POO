@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 
 
-public class ProdutoAlimentar extends Produto{
+public class ProdutoAlimentar extends Produto implements Serializable {
 	protected int calorias;
 	protected int gordura;
 

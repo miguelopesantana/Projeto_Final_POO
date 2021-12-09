@@ -1,13 +1,13 @@
 package com.company;
 
 import java.io.*;
-//import java.io.BufferedReader;
-//import java.io.FileNotFoundException;
-//import java.io.FileReader;
-//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+// Verificar privates e protected e rever JavaDoc
+// Gerar UML e fazer relatorio
+
 
 /**
  * Classe que representa a Loja
@@ -35,11 +35,13 @@ public class Loja implements Serializable {
         Recibos = new ArrayList<>();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Loja loja = new Loja();
         File f = new File("loja.obj");
 
         loja.update(f);
+
+//        loja.listaprodutosDisponiveis();
 
         boolean frequente;
         System.out.println("Para navegar na loja é necessário efetuar login e definir a data.\n");
@@ -60,7 +62,7 @@ public class Loja implements Serializable {
             switch (escolha) {
                 case 1 -> loja.login(0);
                 case 2 -> data = data.setData();
-                case 3 -> loja.comprar(frequente);
+                case 3 -> loja.comprar(frequente, data);
                 case 4 -> loja.listaRecibos();
                 case 0 -> loja.save(f);
             }
@@ -69,12 +71,24 @@ public class Loja implements Serializable {
 
     }
 
-    public void update(File f) { //NAO COMENTAR
-        if (!lerFicObj(f)) lerFicstxt();
+    /**
+     * Método que permite atualizar os ficheiros utilizados pelo programa
+     * Caso haja algum erro a ler os ficheiros de objetos, o programa relê os ficheiros de texto
+     *
+     * @param f ficheiro a ler
+     */
+
+    public void update(File f){
+        if (!lerFicObj(f, 0)) lerFicstxt(0);
+        if (!lerFicObj(f, 0) && !lerFicstxt(1)) {
+            lerFicObj(f, 1);
+            System.out.println("Erro a abrir/ler ficheiros essenciais ao funcionamento do programa.");
+            System.exit(0);
+        }
     }
 
 
-    public boolean lerFicObj(File f) {
+    public boolean lerFicObj(File f, int n) {
         try {
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -87,29 +101,33 @@ public class Loja implements Serializable {
             ois.close();
             return true;
         } catch (FileNotFoundException ex) {
-            System.out.println("Erro a abrir ficheiro de objetos.");
+            if (n == 1) System.out.println("Erro a abrir ficheiro de objetos.");
             return false;
         } catch (IOException ex) {
-            System.out.println("Erro a ler ficheiro de objetos.");
+            if (n == 1) System.out.println("Erro a ler ficheiro de objetos.");
             return false;
         } catch (ClassNotFoundException ex) {
-            System.out.println("Erro a converter objeto.");
+            if (n == 1) System.out.println("Erro a converter objeto.");
             return false;
         }
     }
 
 
-    public void lerFicstxt() {
+    public boolean lerFicstxt(int k) {
         File fcf = new File("ClientesF.txt");
         File fcr = new File("ClientesR.txt");
         File fp = new File("Produtos.txt");
 
-        lerClientes(fcr, 0);
-        lerClientes(fcf, 1);
-        lerProdutos(fp);
+
+        boolean c1 = lerClientes(fcr, 0, k);
+        boolean c2 = lerClientes(fcf, 1, k);
+        boolean c3 = lerProdutos(fp, k);
+
+        return c1 || c2 || c3;
+//        return true;
     }
 
-    public void lerClientes(File f, int n) { //NAO COMENTAR
+    public boolean lerClientes(File f, int n, int k) {
         if (f.exists() && f.isFile()) {
             try {
                 FileReader fr = new FileReader(f);
@@ -118,19 +136,25 @@ public class Loja implements Serializable {
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split(";");
-                    switch (n) {
-                        case 0 -> clientesNormais.add(new Cliente(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), parts[4]));
-                        case 1 -> clientesFrequentes.add(new Cliente(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), parts[4]));
+                    if (k == 1) {
+                        switch (n) {
+                            case 0 -> clientesNormais.add(new Cliente(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), parts[4]));
+                            case 1 -> clientesFrequentes.add(new Cliente(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), parts[4]));
+                        }
                     }
                 }
                 br.close();
+                return true;
             } catch (FileNotFoundException ex) {
-                System.out.println("Erro a abrir ficheiro de texto.");
+                System.out.println("Erro a abrir ficheiro de texto dos clientes.");
+                return false;
             } catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro de texto.");
+                System.out.println("Erro a ler ficheiro de texto dos clientes.");
+                return false;
             }
         } else {
-            System.out.println("Ficheiro não existe.");
+            System.out.println("Ficheiro dos clientes não existe.");
+            return false;
         }
     }
 
@@ -143,24 +167,43 @@ public class Loja implements Serializable {
                 String line;
                 int id = 0;
                 while ((line = br.readLine()) != null) {
+                    Data datai;
+                    Data dataf;
                     String[] l = line.split(";");
                     id++;
-                    switch (Integer.parseInt(l[0])) {
-                        case 0 -> produtosDisponiveis.add(new ProdutoAlimentar(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), l[5].split("/"), l[6].split("/")), Integer.parseInt(l[7]), Integer.parseInt(l[8].split("%")[0])));
-                        case 1 -> produtosDisponiveis.add(new ProdutoLimpeza(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), l[5].split("/"), l[6].split("/")), Integer.parseInt(l[7])));
-                        case 2 -> produtosDisponiveis.add(new ProdutoMobiliario(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), l[5].split("/"), l[6].split("/")), Integer.parseInt(l[7]), Integer.parseInt(l[8]), Integer.parseInt(l[9]), Integer.parseInt(l[10])));
+                    if (Integer.parseInt(l[4]) == 0) {
+                        datai = new Data(0, 0, 0);
+                        dataf = new Data(0, 0, 0);
+                    } else {
+                        datai = new Data(Integer.parseInt(l[5].split("/")[0]), Integer.parseInt(l[5].split("/")[1]), Integer.parseInt(l[5].split("/")[2]));
+                        dataf = new Data(Integer.parseInt(l[6].split("/")[0]), Integer.parseInt(l[6].split("/")[1]), Integer.parseInt(l[6].split("/")[2]));
+                    }
+                    if (k == 1) {
+                        switch (Integer.parseInt(l[0])) {
+                            case 0 -> produtosDisponiveis.add(new ProdutoAlimentar(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), datai, dataf), Integer.parseInt(l[7]), Integer.parseInt(l[8].split("%")[0])));
+                            case 1 -> produtosDisponiveis.add(new ProdutoLimpeza(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), datai, dataf), Integer.parseInt(l[7])));
+                            case 2 -> produtosDisponiveis.add(new ProdutoMobiliario(Integer.parseInt(l[0]), id, l[1], Float.parseFloat(l[2]), Integer.parseInt(l[3]), new Promocao(Integer.parseInt(l[4]), datai, dataf), Integer.parseInt(l[7]), Integer.parseInt(l[8]), Integer.parseInt(l[9]), Integer.parseInt(l[10])));
+                        }
                     }
                 }
                 br.close();
+                return true;
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                System.out.println("Ficheiro \"Produtos.txt\" tem falta de informação.");
+                return false;
             } catch (NumberFormatException ex) {
                 System.out.println("Ficheiro \"Produtos.txt\" contém um erro de sintaxe.");
+                return false;
             } catch (FileNotFoundException ex) {
-                System.out.println("Erro a abrir ficheiro de texto.");
+                System.out.println("Erro a abrir ficheiro \"Produtos.txt\".");
+                return false;
             } catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro de texto.");
+                System.out.println("Erro a ler ficheiro \"Produtos.txt\".");
+                return false;
             }
         } else {
-            System.out.println("Ficheiro não existe.");
+            System.out.println("Ficheiro \"Produtos.txt\" não existe.");
+            return false;
         }
     }
 
@@ -211,7 +254,7 @@ public class Loja implements Serializable {
      * Este método permite realizar uma compra,
      * apresenta a lista de produtos disponíveis caso esta ainda contenha produtos disponíveis para venda
      * solicita qual o índice do produto que se pretende comprar
-     * solicita a quantidade, desse mesmo produto, que se pretende comprar
+     * solicita a quantidade, desse mesmo produto que se pretende comprar
      * verifica se o produto possui uma promoção e calcula o preço mediante essa verificação
      * verifica o peso do produto caso este seja de mobiliário e ajusta o preço caso este seja superior a 15Kg
      * após estas verificações, adiciona ao carrinho a solicitação de compra
@@ -221,105 +264,124 @@ public class Loja implements Serializable {
      * @param frequente boolean que define se o Cliente em questão é Frequente ou Normal
      */
 
-    public void comprar(boolean frequente) {
+    public void comprar(boolean frequente, Data data) {
+
         if (produtosDisponiveis.size() == 0) {
             System.out.println("Não existem mais produtos disponíveis!\n");
         } else {
             System.out.println("Lista de produtos disponíveis:\n");
             listaprodutosDisponiveis();
+            System.out.println("0) Não comprar nenhum produto e voltar ao menu inicial.\n");
             System.out.print("\nSelecione o índice do produto que deseja comprar: ");
             Scanner sc = new Scanner(System.in);
-            int i = sc.nextInt();
-            while (i < 0 || i > produtosDisponiveis.size() - 1) {
-                System.out.println("Índice inválido.");
-                System.out.print("Selecione novamente o índice do produto que deseja comprar: ");
-                sc = new Scanner(System.in);
-                i = sc.nextInt();
-            }
-            System.out.print("Introduza a quantidade que deseja comprar: ");
-            sc = new Scanner(System.in);
-            int q = sc.nextInt();
-            while (q < 1 || q > produtosDisponiveis.get(i).stock) {
-                System.out.println("Quantidade inválida.");
-                System.out.print("Selecione novamente o quantidade do produto que deseja comprar: ");
-                sc = new Scanner(System.in);
-                q = sc.nextInt();
-            }
-
-            int[] existe = {0, 0};
-            for (Compra c : Carrinho) {
-                if (produtosDisponiveis.get(i).nome.equals(c.nome)) {
-                    existe[0] = 1;
-                    existe[1] = Carrinho.indexOf(c);
-                }
-            }
-            int qt;
-            if (existe[0] == 0) qt = q;
-            else qt = q + Carrinho.get(existe[1]).quantidade;
-
-            float preco = 0;
-            if (produtosDisponiveis.get(i).promo.tipo == 0) {
-                preco = qt * produtosDisponiveis.get(i).preco;
-            } else if (produtosDisponiveis.get(i).promo.tipo == 1) {
-                if (qt < 4) preco = qt * produtosDisponiveis.get(i).preco;
-                else {
-//                    System.out.println((qt - (sc.nextInt(qt / 4))));
-                    int prom = (qt / 4);
-                    preco = (qt - prom) * produtosDisponiveis.get(i).preco;
-                }
-            } else if (produtosDisponiveis.get(i).promo.tipo == 2) {
-                int p;
-                for (int k = 0; k < qt; k++) {
-                    p = Math.min(k, 10);
-//                    System.out.println(produtosDisponiveis.get(i).preco * (1 - (0.05 * p)));
-                    preco = (float) (produtosDisponiveis.get(i).preco * (1 - (0.05 * p)));
-                }
-            }
-
-            if (produtosDisponiveis.get(i).tipo == 2 && produtosDisponiveis.get(i).getPeso() >= 15) preco += 10 * qt;
-
-            if (produtosDisponiveis.get(i).promo.tipo == 0) {
-                if (existe[0] == 0) Carrinho.add(new Compra(produtosDisponiveis.get(i).nome, qt, preco, false));
-                else {
-                    Carrinho.get(existe[1]).setQuantidade(Carrinho.get(existe[1]).quantidade + qt);
-                    Carrinho.get(existe[1]).setPreco(Carrinho.get(existe[1]).preco + preco);
-                }
-            } else if (produtosDisponiveis.get(i).promo.tipo == 1) {
-                if (existe[0] == 0) Carrinho.add(new Compra(produtosDisponiveis.get(i).nome, qt, preco, true));
-                else {
-                    Carrinho.get(existe[1]).setQuantidade(qt);
-                    Carrinho.get(existe[1]).setPreco(preco);
-                }
-            } else if (produtosDisponiveis.get(i).promo.tipo == 2) {
-                if (existe[0] == 0) Carrinho.add(new Compra(produtosDisponiveis.get(i).nome, qt, preco, true));
-                else {
-                    Carrinho.get(existe[1]).setQuantidade(qt);
-                    Carrinho.get(existe[1]).setPreco(preco);
-                }
-            }
-            produtosDisponiveis.get(i).stock -= q;
-            if (produtosDisponiveis.get(i).stock == 0) produtosDisponiveis.remove(i);
-
-
-            System.out.println("\nPreço final: " + String.format("%.2f", preco) + "€");
-            System.out.println("Compra efetuada com sucesso.\n");
-            if (produtosDisponiveis.size() == 0) {
-                System.out.println("Não existem mais produtos disponíveis!\n");
-                recibo(frequente, preco);
+            int i = sc.nextInt() - 1;
+            if (i == -1) {
+                System.out.print("\n");
             } else {
-                int escolha;
-                Scanner stdin = new Scanner(System.in);
-                System.out.println("MENU---------------------------------------------------");
-                System.out.println("1 - Continuar a comprar");
-                System.out.println("0 - Voltar ao menu inicial");
-                escolha = stdin.nextInt();
-                System.out.println("--------------------------------------------------------\n");
-                switch (escolha) {
-                    case 1 -> comprar(frequente);
-                    case 0 -> recibo(frequente, preco);
+
+
+                while (i < 0 || i > produtosDisponiveis.size() - 1) {
+                    System.out.println("Índice inválido.");
+                    System.out.print("Selecione novamente o índice do produto que deseja comprar: ");
+                    sc = new Scanner(System.in);
+                    i = sc.nextInt() - 1;
+                }
+                System.out.print("Introduza a quantidade que deseja comprar: ");
+                sc = new Scanner(System.in);
+                int q = sc.nextInt();
+                while (q < 1 || q > produtosDisponiveis.get(i).stock) {
+                    System.out.println("Quantidade inválida.");
+                    System.out.print("Selecione novamente o quantidade do produto que deseja comprar: ");
+                    sc = new Scanner(System.in);
+                    q = sc.nextInt();
+                }
+
+                int[] existe = {0, 0};
+                for (Compra c : Carrinho) {
+                    if (produtosDisponiveis.get(i).nome.equals(c.nome) && produtosDisponiveis.get(i).indentificador == c.identificador) {
+                        existe[0] = 1;
+                        existe[1] = Carrinho.indexOf(c);
+                    }
+                }
+                int qt;
+                if (existe[0] == 0) qt = q;
+                else qt = q + Carrinho.get(existe[1]).quantidade;
+
+                float preco = 0;
+                if (produtosDisponiveis.get(i).promo.tipo == 0 || (produtosDisponiveis.get(i).promo.tipo != 0 && !verificaPromocao(data, produtosDisponiveis.get(i).promo))) {
+                    preco = qt * produtosDisponiveis.get(i).preco;
+                } else if (produtosDisponiveis.get(i).promo.tipo == 1) {
+                    if (qt < 4) preco = qt * produtosDisponiveis.get(i).preco;
+                    else {
+//                    System.out.println((qt - (sc.nextInt(qt / 4))));
+                        int prom = (qt / 4);
+                        preco = (qt - prom) * produtosDisponiveis.get(i).preco;
+                    }
+                } else if (produtosDisponiveis.get(i).promo.tipo == 2) {
+                    int p;
+                    for (int k = 0; k < qt; k++) {
+                        p = Math.min(k, 10);
+//                    System.out.println(produtosDisponiveis.get(i).preco * (1 - (0.05 * p)));
+                        preco = (float) (produtosDisponiveis.get(i).preco * (1 - (0.05 * p)));
+                    }
+                }
+
+                if (produtosDisponiveis.get(i).tipo == 2 && produtosDisponiveis.get(i).getPeso() >= 15)
+                    preco += 10 * qt;
+
+                if (produtosDisponiveis.get(i).promo.tipo == 0) {
+                    if (existe[0] == 0)
+                        Carrinho.add(new Compra(produtosDisponiveis.get(i).indentificador, produtosDisponiveis.get(i).nome, qt, preco));
+                    else {
+                        Carrinho.get(existe[1]).setQuantidade(Carrinho.get(existe[1]).quantidade + qt);
+                        Carrinho.get(existe[1]).setPreco(Carrinho.get(existe[1]).preco + preco);
+                    }
+                } else if (produtosDisponiveis.get(i).promo.tipo == 1) {
+                    if (existe[0] == 1 && verificaPromocao(data, produtosDisponiveis.get(i).promo)) {
+                        Carrinho.get(existe[1]).setQuantidade(qt);
+                        Carrinho.get(existe[1]).setPreco(preco);
+                    } else
+                        Carrinho.add(new Compra(produtosDisponiveis.get(i).indentificador, produtosDisponiveis.get(i).nome, qt, preco));
+                } else if (produtosDisponiveis.get(i).promo.tipo == 2) {
+                    if (existe[0] == 1 && verificaPromocao(data, produtosDisponiveis.get(i).promo)) {
+                        Carrinho.get(existe[1]).setQuantidade(qt);
+                        Carrinho.get(existe[1]).setPreco(preco);
+                    } else
+                        Carrinho.add(new Compra(produtosDisponiveis.get(i).indentificador, produtosDisponiveis.get(i).nome, qt, preco));
+                }
+                produtosDisponiveis.get(i).stock -= q;
+                if (produtosDisponiveis.get(i).stock == 0) produtosDisponiveis.remove(i);
+
+
+                System.out.println("\nPreço final: " + String.format("%.2f", preco) + "€");
+                System.out.println("Compra efetuada com sucesso.\n");
+                if (produtosDisponiveis.size() == 0) {
+                    System.out.println("Não existem mais produtos disponíveis!\n");
+                    recibo(frequente, preco);
+                } else {
+                    int escolha;
+                    Scanner stdin = new Scanner(System.in);
+                    System.out.println("MENU---------------------------------------------------");
+                    System.out.println("1 - Continuar a comprar");
+                    System.out.println("0 - Voltar ao menu inicial");
+                    escolha = stdin.nextInt();
+                    System.out.println("--------------------------------------------------------\n");
+                    switch (escolha) {
+                        case 1 -> comprar(frequente, data);
+                        case 0 -> recibo(frequente, preco);
+                    }
                 }
             }
         }
+    }
+
+    public boolean verificaPromocao(Data data, Promocao promocao) {
+        if (promocao.datai.ano < data.ano && data.ano < promocao.dataf.ano) return true;
+        else if (promocao.datai.ano == data.ano && promocao.datai.mes < data.mes) return true;
+        else if (data.ano == promocao.dataf.ano && data.mes < promocao.dataf.mes) return true;
+        else if (promocao.datai.ano == data.ano && promocao.datai.mes == data.mes && promocao.datai.dia <= data.dia)
+            return true;
+        else return data.ano == promocao.dataf.ano && data.mes == promocao.dataf.mes && data.dia <= promocao.dataf.dia;
     }
 
     /**
@@ -344,8 +406,7 @@ public class Loja implements Serializable {
         }
         recibo.setPrecot(precot);
         Recibos.add(recibo);
-        System.out.println("Recibo: (Quant / Produto / Preço)");
-        recibo.tostring();
+        System.out.println(recibo);
         Carrinho.clear();
     }
 
@@ -356,30 +417,27 @@ public class Loja implements Serializable {
     public void listaprodutosDisponiveis() {
         int k = 0;
         for (Produto p : produtosDisponiveis) {
-            System.out.println("" + k + ") " + p + "\n");
             k++;
+            System.out.println("" + k + ") " + p + "\n");
         }
     }
-
-//    public void listaCompras() {
-//        if (Carrinho.size() == 0) System.out.println("Não existem produtos no carrinho.");
-//        for (Compra c : Carrinho) {
-//            System.out.println("" + c.quantidade + " " + c.nome + " " + String.format("%.2f", c.preco));
-//        }
-//    }
 
     /**
      * Método que apresenta a lista de todos os recibos
      */
 
     public void listaRecibos() {
-        System.out.println("Lista de recibos:\n");
-        int k = 1;
-        for (Recibo r : Recibos) {
-            System.out.println("Recibo " + k + ":");
-            r.tostring();
-            System.out.print("\n");
-            k++;
+        if (Recibos.size() == 0) {
+            System.out.println("Não existe histórico de compras!\n");
+        } else {
+            System.out.println("Lista de recibos:\n");
+            int k = 1;
+            for (Recibo r : Recibos) {
+                System.out.println("Recibo " + k + ":" + r);
+//                r.tostring();
+                System.out.print("\n");
+                k++;
+            }
         }
     }
 
@@ -388,24 +446,14 @@ public class Loja implements Serializable {
         try {
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(this);
+            Loja loja1 = new Loja(clientesFrequentes, clientesNormais, produtosDisponiveis, Carrinho, Recibos);
+            oos.writeObject(loja1);
             oos.close();
         } catch (FileNotFoundException ex) {
-            System.out.println("Erro a criar ficheiro.");
+            System.out.println("Erro a criar ficheiro de objetos.");
         } catch (IOException ex) {
-            System.out.println("Erro a escrever para o ficheiro.");
+            System.out.println("Erro a escrever para o ficheiro de objetos.");
         }
         System.exit(0);
-    }
-
-    @Override
-    public String toString() {
-        return "Loja{" +
-                "clientesFrequentes=" + clientesFrequentes +
-                ", clientesNormais=" + clientesNormais +
-                ", produtosDisponiveis=" + produtosDisponiveis +
-                ", Carrinho=" + Carrinho +
-                ", Recibos=" + Recibos +
-                '}';
     }
 }

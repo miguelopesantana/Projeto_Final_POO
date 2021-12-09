@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class Cliente {
+public class Cliente implements Serializable {
 	protected String nome;
 	protected String morada;
 	protected String email;

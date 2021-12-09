@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * Classe que caracteriza um Produto
@@ -36,7 +35,7 @@ abstract class Produto implements Serializable {
         this.promo = promo;
     }
     
-     //comento o quê aqui??
+     //
 
     public int getPeso() {
         return 0;
@@ -51,10 +50,10 @@ abstract class Produto implements Serializable {
     public String getData(int n) {
         switch (n) {
             case 0 -> {
-                return this.promo.datai[0] + "/" + this.promo.datai[1] + "/" + this.promo.datai[2];
+                return this.promo.datai.dia + "/" + this.promo.datai.mes + "/" + this.promo.datai.ano;
             }
             case 1 -> {
-                return this.promo.dataf[0] + "/" + this.promo.dataf[1] + "/" + this.promo.dataf[2];
+                return this.promo.dataf.dia + "/" + this.promo.dataf.mes + "/" + this.promo.dataf.ano;
             }
         }
         return null;
@@ -86,7 +85,7 @@ abstract class Produto implements Serializable {
     
     @Override
     public String toString() {
-        return "" + nome + "  Preço: " + String.format("%.2f", preco) + "€  Stock: " + stock;
+        return "" + nome + "  ID: " + indentificador + "  Preço: " + String.format("%.2f", preco) + "€  Stock: " + stock;
     }
 
 }

@@ -9,8 +9,8 @@ import java.io.Serializable;
 
 public class Promocao implements Serializable {
     protected int tipo;
-    protected String[] datai;
-    protected String[] dataf;
+    protected Data datai;
+    protected Data dataf;
 
     /**
      * Construtor
@@ -19,7 +19,7 @@ public class Promocao implements Serializable {
      * @param dataf data do fim da promoção
      */
 
-    public Promocao(int tipo, String[] datai, String[] dataf) {
+    public Promocao(int tipo, Data datai, Data dataf) {
         this.tipo = tipo;
         this.datai = datai;
         this.dataf = dataf;

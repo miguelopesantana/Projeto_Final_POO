@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.Serializable;
 import java.time.Year;
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -7,11 +7,11 @@ import java.io.Serializable;
  * @author Guilherme Faria e Miguel Santana
  */
 
-public class Compra {
+public class Compra implements Serializable {
+    protected int identificador;
     protected String nome;
     protected int quantidade;
     protected float preco;
-    protected boolean promo;
 
     /**
      * Construtor
@@ -26,6 +26,11 @@ public class Compra {
         this.quantidade = quantidade;
     }
 
+    /**
+     * Função que recebe como parâmetro um inteiro e define a variável quantidade com o valor desse inteiro
+     * @param quantidade corresponde à quantidade de produtos do mesmo tipo que o cliente pretende comprar
+     */
+
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
@@ -39,16 +44,13 @@ public class Compra {
         this.preco = preco;
     }
 
-//    /**
-//     * Método que permite imprimir as características de uma compra
-//     * @return uma string com todas as características da Classe Compra
-//     */
+    /**
+     * Método que permite imprimir as características de uma compra
+     * @return uma string com todas as características da Classe Compra
+     */
 
-//    @Override
-//    public String toString() {
-//        return "Compra{" +
-//                "produto='" + nome + '\'' +
-//                ", quantidade=" + quantidade +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "       " + this.quantidade + " " + this.nome + " " + String.format("%.2f", this.preco) +  "€\n";
+    }
 }

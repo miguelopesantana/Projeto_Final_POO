@@ -37,9 +37,11 @@ public class Recibo implements Serializable {
      * @return uma string com todas as características do recibo associado a cada compra
      */
 
-    public void tostring() {
-        for (Compra c : Compras) {
-            System.out.println("       " + c.quantidade + " " + c.nome + " " + c.preco +  "€\n");
-        }
+
+    @Override
+    public String toString() {
+        return "Recibo: (Quant / Produto / Preço)\n" +
+                " " + Compras +
+                "Total: " + precot + "€\n";
     }
 }
