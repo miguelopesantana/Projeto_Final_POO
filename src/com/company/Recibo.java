@@ -28,7 +28,7 @@ public class Recibo implements Serializable {
      * @param precot preço total da compra associada ao recibo
      */
 
-    public void setPrecot(int precot) {
+    protected void setPrecot(int precot) {
         this.precot = precot;
     }
 

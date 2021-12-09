@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,13 +36,18 @@ public class Loja implements Serializable {
         Recibos = new ArrayList<>();
     }
 
-    public static void main(String[] args){
+    public Loja(List<Cliente> clientesFrequentes, List<Cliente> clientesNormais, List<Produto> produtosDisponiveis, List<Compra> Carrinho, List<Recibo> Recibos) {
+        this.clientesFrequentes = clientesFrequentes;
+        this.clientesNormais = clientesNormais;
+        this.produtosDisponiveis = produtosDisponiveis;
+        this.Carrinho = Carrinho;
+        this.Recibos = Recibos;
+    }
+
+    public static void main(String[] args) {
         Loja loja = new Loja();
         File f = new File("loja.obj");
-
         loja.update(f);
-
-//        loja.listaprodutosDisponiveis();
 
         boolean frequente;
         System.out.println("Para navegar na loja é necessário efetuar login e definir a data.\n");
@@ -49,25 +55,44 @@ public class Loja implements Serializable {
         Data data = new Data();
         data = data.setData();
         while (true) { // Menu
+            loja.menu(f, loja, frequente, data);
+        }
+
+
+    }
+
+    /**
+     * Método que apresenta o interface do menu e gere o programa mediante as opções do cliente
+     * @param f ficheiro de objetos a criar/abrir
+     * @param loja instância da classe Loja
+     * @param frequente indica se o cliente que deu login é frequente ou regular
+     * @param data data introduzida pelo utilizador
+     */
+
+    public void menu(File f, Loja loja, boolean frequente, Data data) {
+        try {
             int escolha;
             Scanner stdin = new Scanner(System.in);
-            System.out.println("MENU---------------------------------------------------");
+            System.out.println("-----------------------------MENU-----------------------------");
             System.out.println("1 - Mudar de conta");
             System.out.println("2 - Mudar a data");
             System.out.println("3 - Comprar produtos");
             System.out.println("4 - Consultar o histórico de compras");
             System.out.println("0 - Sair do programa");
             escolha = stdin.nextInt();
-            System.out.println("--------------------------------------------------------\n");
+            System.out.println("--------------------------------------------------------------\n");
             switch (escolha) {
                 case 1 -> loja.login(0);
-                case 2 -> data = data.setData();
+                case 2 -> data.setData();
                 case 3 -> loja.comprar(frequente, data);
                 case 4 -> loja.listaRecibos();
                 case 0 -> loja.save(f);
             }
+        } catch (InputMismatchException ex) {
+            System.out.println("--------------------------------------------------------------\n");
+            System.out.println("Data inválida. Os únicos caracteres aceites são algarismos.\n");
+            menu(f, loja, frequente, data);
         }
-
 
     }
 
@@ -78,7 +103,7 @@ public class Loja implements Serializable {
      * @param f ficheiro a ler
      */
 
-    public void update(File f){
+    public void update(File f) {
         if (!lerFicObj(f, 0)) lerFicstxt(0);
         if (!lerFicObj(f, 0) && !lerFicstxt(1)) {
             lerFicObj(f, 1);
@@ -87,6 +112,13 @@ public class Loja implements Serializable {
         }
     }
 
+    /**
+     * Método que permite ler o ficheiro de objetos
+     *
+     * @param f ficheiro de objetos a ser lido
+     * @param n serve para imprimir a mensagem de erro caso não hajam ficheiros suficientes para correr o programa
+     * @return true se o ficheiro for lido com sucesso, false caso ocorra algum erro
+     */
 
     public boolean lerFicObj(File f, int n) {
         try {
@@ -112,6 +144,9 @@ public class Loja implements Serializable {
         }
     }
 
+    /**
+     * Método que lê todos os ficheiros de texto (ClientesFrequentes / ClientesNormais/ Produtos)
+     */
 
     public boolean lerFicstxt(int k) {
         File fcf = new File("ClientesF.txt");
@@ -126,6 +161,13 @@ public class Loja implements Serializable {
         return c1 || c2 || c3;
 //        return true;
     }
+
+    /**
+     * Método que lê o ficheiro de Clientes e os adiciona à própria lista
+     *
+     * @param f ficheiro de produtos
+     * @param n inteiro que define se os clientes a adicionar à lista são Frequentes ou Normais
+     */
 
     public boolean lerClientes(File f, int n, int k) {
         if (f.exists() && f.isFile()) {
@@ -158,7 +200,13 @@ public class Loja implements Serializable {
         }
     }
 
-    public void lerProdutos(File f) { //NAO COMENTAR
+    /**
+     * Método que lê o ficheiro de produtos e adiciona esses mesmos produtos à lista de produtos disponíveis
+     *
+     * @param f ficheiro de produtos
+     */
+
+    public boolean lerProdutos(File f, int k) {
         if (f.exists() && f.isFile()) {
             try {
                 FileReader fr = new FileReader(f);
@@ -261,7 +309,8 @@ public class Loja implements Serializable {
      * apresenta o valor final da compra
      * pergunta ao utilizador se pretende receber o recibo da compra efetuada ou se deseja efetuar outra compra
      *
-     * @param frequente boolean que define se o Cliente em questão é Frequente ou Normal
+     * @param frequente boolean que define se o Cliente em questão é frequente ou regular
+     * @param data      data introduzida pelo utilizador que permite verificar se as promoções associadas a cada produto estáo ativas
      */
 
     public void comprar(boolean frequente, Data data) {
@@ -375,6 +424,14 @@ public class Loja implements Serializable {
         }
     }
 
+    /**
+     * Método que verifica, de acordo com a data inserida pelo cliente, se a promoção está ativa
+     *
+     * @param data     data introduzida pelo utilizador
+     * @param promocao promoção a ser verificada
+     * @return true se a promoção está ativa, false caso contrário
+     */
+
     public boolean verificaPromocao(Data data, Promocao promocao) {
         if (promocao.datai.ano < data.ano && data.ano < promocao.dataf.ano) return true;
         else if (promocao.datai.ano == data.ano && promocao.datai.mes < data.mes) return true;
@@ -391,7 +448,7 @@ public class Loja implements Serializable {
      * Adiciona o recibo à lista de Recibos e imprime o mesmo
      * Limpa o Carrinho
      *
-     * @param frequente boolean que define se o Cliente em questão é Frequente ou Normal
+     * @param frequente define se o Cliente em questão é frequente ou regular
      * @param preco     preço da compra sem taxa de entrega
      */
 
@@ -411,7 +468,7 @@ public class Loja implements Serializable {
     }
 
     /**
-     * Método que apresenta a listagem de todos os produtos disponíveis para venda
+     * Método que faz a listagem de todos os produtos disponíveis para venda
      */
 
     public void listaprodutosDisponiveis() {
@@ -441,8 +498,13 @@ public class Loja implements Serializable {
         }
     }
 
-    public void save(File f) { //NAO COMENTAR
+    /**
+     * Método que guarda a informação no ficheiro de objetos
+     *
+     * @param f ficheiro de objetos a ser guardado
+     */
 
+    public void save(File f) {
         try {
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream oos = new ObjectOutputStream(fos);

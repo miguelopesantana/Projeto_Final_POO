@@ -5,10 +5,22 @@ import java.time.Year;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Data {
+/**
+ * Classe que caracteriza a Data
+ * @author Guilherme Faria e Miguel Santana
+ */
+
+public class Data implements Serializable {
     protected int dia;
     protected int mes;
     protected int ano;
+
+    /**
+     * Construtor
+     * @param dia dia em que está a ser efetuada a compra
+     * @param mes mês em que está a ser efetuada a compra
+     * @param ano ano em que está a ser efetuada a compra
+     */
 
     public Data(int dia, int mes, int ano) {
         this.dia = dia;
@@ -16,9 +28,14 @@ public class Data {
         this.ano = ano;
     }
 
-    public Data() {}
+    public Data(){}
 
-    public Data setData() {
+    /**
+     * Método que permite definir a data de acordo com a escolha do cliente
+     * @return data introduzida pelo cliente
+     */
+
+    protected Data setData() {
         try {
             System.out.println("Introduza a data:");
             System.out.print("Dia: ");
@@ -30,7 +47,7 @@ public class Data {
             System.out.print("Ano: ");
             Scanner sc3 = new Scanner(System.in);
             int ano = sc3.nextInt();
-            while (!Data.verificaData(dia, mes, ano)) {
+            while (!verificaData(dia, mes, ano)) {
                 System.out.print("\nInsira a data:\n ");
                 System.out.print("Dia: ");
                 Scanner sc4 = new Scanner(System.in);
@@ -53,7 +70,15 @@ public class Data {
         return null;
     }
 
-    public static boolean verificaData(int dia, int mes, int ano) {
+    /**
+     * Método que permite verificar se a data introduzida pelo utilizador é válida
+     * @param dia dia introduzido pelo Cliente
+     * @param mes mês introduzido pelo Cliente
+     * @param ano ano introduzido pelo Cliente
+     * @return true se a data introduzida for válida, false caso não seja válida
+     */
+
+    private boolean verificaData(int dia, int mes, int ano) {
         String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
         if (dia < 1) {
             System.out.println("Dia inválido");
@@ -75,7 +100,7 @@ public class Data {
 
         if (Year.isLeap(ano)) {
             if (mes == 2 && dia > 29) {
-                System.out.println("Data inválida. Fevereiro em anos comuns tem apenas 29 dias");
+                System.out.println("Data inválida. Fevereiro em anos comuns tem apenas 28 dias");
                 return false;
             }
         }

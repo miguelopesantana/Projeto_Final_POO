@@ -27,7 +27,7 @@ public class ProdutoLimpeza extends Produto implements Serializable{
 		this.toxicidade = toxicidade;
 	}
 
-	public int getPeso() {
+	protected int getPeso() {
 		return 0;
 	}
 

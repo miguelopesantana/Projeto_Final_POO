@@ -20,7 +20,8 @@ public class Compra implements Serializable {
      * @param preco preço total da compra a realizar
      */
 
-    public Compra(String produto, int quantidade , float preco, boolean promocao){
+    protected Compra(int identificador, String produto, int quantidade , float preco){
+        this.identificador = identificador;
         this.nome = produto;
         this.preco = preco;
         this.quantidade = quantidade;
@@ -31,7 +32,7 @@ public class Compra implements Serializable {
      * @param quantidade corresponde à quantidade de produtos do mesmo tipo que o cliente pretende comprar
      */
 
-    public void setQuantidade(int quantidade) {
+    protected void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -40,7 +41,7 @@ public class Compra implements Serializable {
      * @param preco preço total da compra a realizar
      */
 
-    public void setPreco(float preco) {
+    protected void setPreco(float preco) {
         this.preco = preco;
     }
 

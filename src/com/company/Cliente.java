@@ -23,7 +23,7 @@ public class Cliente implements Serializable {
 	 * @param data_nasc data de nascimento do Cliente
 	 */
 
-	public Cliente(String nome, String morada, String email, int num_telemovel, String data_nasc) {
+	protected Cliente(String nome, String morada, String email, int num_telemovel, String data_nasc) {
 		this.nome = nome;
 		this.morada = morada;
 		this.email = email;

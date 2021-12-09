@@ -30,7 +30,7 @@ public class ProdutoAlimentar extends Produto implements Serializable {
 		this.gordura = gordura;
 	}
 
-	public int getPeso() {
+	protected int getPeso() {
 		return 0;
 	}
 

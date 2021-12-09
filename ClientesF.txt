@@ -1,2 +1,5 @@
-Guilherme Faria;Av. Dr. Francisco Sá Carneiro;guifaria02@gmail.com;961480231;20/11/2002
-Miguel Santana;Casa da Joana;mls;21;24/8/2002
+Guilherme Faria;Av. Dr. Francisco Sá Carneiro;guifaria02@gmail.com;961480231;20/11/2005
+Miguel Santana;Avenida da Liberdade;mls@mls.com;963500821;13/7/2002
+Rafael Baptista;PAV;rafab@gmail.com;923456981;24/2/1998
+Pedro Carnide;Paulo Quintelo;pcarnide@gmail.com;928361729;1/7/1995
+Bonifácio Castanha;Rua da Esquina;boniscastor@gmail.com;915666172;6/6/2006

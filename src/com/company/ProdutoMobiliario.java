@@ -31,7 +31,7 @@ public class ProdutoMobiliario extends Produto implements Serializable{
 		this.dimensao = larg*prof*alt;
 	}
 
-	public int getPeso() {
+	protected int getPeso() {
 		return peso;
 	}
 

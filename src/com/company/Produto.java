@@ -34,10 +34,8 @@ abstract class Produto implements Serializable {
         this.stock = stock;
         this.promo = promo;
     }
-    
-     //
 
-    public int getPeso() {
+    protected int getPeso() {
         return 0;
     }
 
@@ -47,7 +45,7 @@ abstract class Produto implements Serializable {
      * @return retorna uma string com a respetiva data 
      */
 
-    public String getData(int n) {
+    private String getData(int n) {
         switch (n) {
             case 0 -> {
                 return this.promo.datai.dia + "/" + this.promo.datai.mes + "/" + this.promo.datai.ano;
@@ -61,12 +59,12 @@ abstract class Produto implements Serializable {
 
     /**
      * Método que identifica o tipo de promoção associada a um produto
-     * @param n inteiro que define se existe uma promoção associada a um produto e, se caso exista, qual o tipo de promoção
+     * @param n define se existe uma promoção associada a um produto e, caso exista, qual o tipo de promoção
      * @return retorna uma mensagem caso não haja uma promoção associada,
      *         ou, caso haja, retorna a promoção associada bem como as datas de início e fim da respetiva promoção
      */
 
-    public String toStringPromo(int n) {
+    protected String toStringPromo(int n) {
         String[] promo = {"Pague-3-leve-4", "Pague-menos"};
         switch (n) {
             case 0 -> {
